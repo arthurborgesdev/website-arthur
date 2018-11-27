@@ -63,6 +63,9 @@ app.post('/contact', (req, res) => {
 
 	res.redirect('/contact')
 })
+
+app.get('/blog', (req, res) =>
+	res.sendFile('blog.html', rootPATH ))
 	
 
 app.listen(port, () =>
