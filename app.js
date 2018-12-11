@@ -7,7 +7,7 @@ const express = require('express'),
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 rootPATH = { root: path.join(__dirname, 'public') }
@@ -25,6 +25,7 @@ app.get('/contact', (req, res) =>
 	res.sendFile('contact.html', rootPATH ))
 
 app.post('/contact', (req, res) => {
+	console.log(req.body);
 	var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
   var request = sg.emptyRequest({
 	  method: 'POST',
